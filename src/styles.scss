@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: Helvetica, sans-serif;
+    background-color: #F5F7FB;
+    color: #2E344D;
+  }
+  
+  select, input, button {
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    margin: 5px;
+  }
+  
+  div {
+    border-radius: 26px;
+    padding: 10px;
+    margin: 10px 0;
+  }
+  

@@ -1,0 +1,3 @@
+<select (change)="onFloorChange($event)">
+    <option *ngFor="let floor of floors" [value]="floor">{{ floor }}</option>
+</select>

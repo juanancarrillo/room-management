@@ -1,26 +1,6 @@
-/*import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-room-list',
-  templateUrl: './room-list.component.html',
-  styleUrls: ['./room-list.component.scss']
-})
-export class RoomListComponent {
-
-}
-*/
-
 // room-list.component.ts
-import { Component, Input, OnChanges } from '@angular/core';
-import { RoomService } from '../../services/room.service';
-
-interface Room {
-  id: number;
-  name: string;
-  capacity: number;
-  occupancy: number;
-  floor: number;
-}
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Room } from '../../models/room.model';
 
 @Component({
   selector: 'app-room-list',
@@ -35,25 +15,18 @@ interface Room {
   `,
   styles: []
 })
-export class RoomListComponent implements OnChanges {
+export class RoomListComponent {
   @Input() floor!: number;
-  rooms: Room[] = [];
+  @Input() rooms: Room[] = [];
+  @Output() editRoomEvent = new EventEmitter<Room>();
 
-  constructor(private roomService: RoomService) {}
-
-  ngOnChanges() {
-    if (this.floor) {
-      this.roomService.getRoomsByFloor(this.floor).subscribe(rooms => this.rooms = rooms);
-    }
-  }
+  constructor() {}
 
   editRoom(room: Room) {
-    // Lógica para editar sala
+    this.editRoomEvent.emit(room);
   }
 
   deleteRoom(roomId: number) {
-    this.roomService.deleteRoom(roomId);
+    // No necesitamos hacer nada aquí ya que el padre manejará la eliminación
   }
 }
-
-

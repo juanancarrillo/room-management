@@ -1,0 +1,60 @@
+{
+  "rooms": [
+    {
+      "id": "1",
+      "name": "Room A",
+      "capacity": 10,
+      "occupancy": 5,
+      "floor": 1
+    },
+    {
+      "id": "2",
+      "name": "Room B",
+      "capacity": 20,
+      "occupancy": 15,
+      "floor": 1
+    },
+    {
+      "id": "3",
+      "name": "Room C",
+      "capacity": 15,
+      "occupancy": 10,
+      "floor": 2
+    },
+    {
+      "id": 1722424750149,
+      "name": "Juan Antonio",
+      "capacity": 4,
+      "occupancy": 0,
+      "floor": "1"
+    },
+    {
+      "id": 1722424751277,
+      "name": "Juan Antonio",
+      "capacity": 4,
+      "occupancy": 0,
+      "floor": "1"
+    },
+    {
+      "id": 1722424767638,
+      "name": "ddfsdfsd",
+      "capacity": 3,
+      "occupancy": 3,
+      "floor": "2"
+    },
+    {
+      "id": 1722424768206,
+      "name": "ddfsdfsd",
+      "capacity": 3,
+      "occupancy": 3,
+      "floor": "2"
+    },
+    {
+      "id": 1722424768598,
+      "name": "ddfsdfsd",
+      "capacity": 3,
+      "occupancy": 3,
+      "floor": "2"
+    }
+  ]
+}

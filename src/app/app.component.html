@@ -1,4 +1,3 @@
-// app.component.html
 <app-floor-selector (floorChanged)="onFloorChanged($event)"></app-floor-selector>
-<app-room-list [floor]="selectedFloor"></app-room-list>
-<app-room-form [room]="selectedRoom"></app-room-form>
+<app-room-list [floor]="selectedFloor" [rooms]="rooms" (editRoomEvent)="onEditRoom($event)"></app-room-list>
+<app-room-form [room]="selectedRoom" (roomSaved)="onRoomSaved()"></app-room-form>

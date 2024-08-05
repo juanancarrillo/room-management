@@ -1,4 +1,3 @@
-// room-form.component.ts
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { RoomService } from '../../services/room.service';
 import { Room } from '../../models/room.model';
@@ -13,7 +12,29 @@ import { Room } from '../../models/room.model';
       <button type="submit">Guardar</button>
     </form>
   `,
-  styles: []
+  styles: [`
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    input, button {
+      padding: 10px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #2E344D;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1C1F33;
+    }
+  `]
 })
 export class RoomFormComponent {
   @Input() room: Room = { id: 0, name: '', capacity: 0, occupancy: 0, floor: 1 };
@@ -23,11 +44,12 @@ export class RoomFormComponent {
 
   saveRoom() {
     if (this.room.id) {
-      this.roomService.updateRoom(this.room).subscribe(updatedRoom => {
+      this.roomService.updateRoom(this.room).subscribe(() => {
         this.roomSaved.emit();
       });
     } else {
-      this.roomService.addRoom({ ...this.room, id: Date.now() }).subscribe(newRoom => {
+      this.roomService.addRoom(this.room).subscribe(newRoom => {
+        this.room = newRoom;
         this.roomSaved.emit();
       });
     }

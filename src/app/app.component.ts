@@ -1,4 +1,3 @@
-// app.component.ts
 import { Component } from '@angular/core';
 import { RoomService } from './services/room.service';
 import { Room } from './models/room.model';
@@ -6,7 +5,7 @@ import { Room } from './models/room.model';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   selectedFloor: number = 1;
@@ -32,6 +31,10 @@ export class AppComponent {
   onRoomSaved() {
     this.loadRooms();
     this.resetSelectedRoom();
+  }
+
+  onRoomDeleted() {
+    this.loadRooms();
   }
 
   resetSelectedRoom() {

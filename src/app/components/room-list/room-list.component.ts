@@ -1,32 +1,40 @@
-// room-list.component.ts
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { RoomService } from '../../services/room.service';
 import { Room } from '../../models/room.model';
 
 @Component({
   selector: 'app-room-list',
-  template: `
-    <div *ngIf="rooms">
-      <div *ngFor="let room of rooms">
-        {{ room.name }} - Capacidad: {{ room.capacity }} - Ocupación: {{ room.occupancy }}
-        <button (click)="editRoom(room)">Editar</button>
-        <button (click)="deleteRoom(room.id)">Eliminar</button>
-      </div>
-    </div>
-  `,
-  styles: []
+  templateUrl: './room-list.component.html',
+  styleUrls: ['./room-list.component.scss']
 })
-export class RoomListComponent {
-  @Input() floor!: number;
+export class RoomListComponent implements OnChanges {
+  @Input() floor: number = 1;
   @Input() rooms: Room[] = [];
   @Output() editRoomEvent = new EventEmitter<Room>();
+  @Output() roomDeleted = new EventEmitter<void>();
 
-  constructor() {}
+  constructor(private roomService: RoomService) {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['floor']) {
+      this.loadRooms();
+    }
+  }
+
+  private loadRooms() {
+    this.roomService.getRoomsByFloor(this.floor).subscribe(rooms => {
+      this.rooms = rooms;
+    });
+  }
 
   editRoom(room: Room) {
     this.editRoomEvent.emit(room);
   }
 
   deleteRoom(roomId: number) {
-    // No necesitamos hacer nada aquí ya que el padre manejará la eliminación
+    this.roomService.deleteRoom(roomId).subscribe(() => {
+      this.roomDeleted.emit();
+      this.loadRooms();
+    });
   }
 }

@@ -1,0 +1,22 @@
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  input, button {
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    background-color: #2E344D;
+    color: white;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #1C1F33;
+  }
+  

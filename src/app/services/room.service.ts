@@ -1,15 +1,13 @@
-// room.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, Observable } from 'rxjs';
 import { Room } from '../models/room.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoomService {
-  private apiUrl = 'http://localhost:3000/rooms'; // URL base de la API
+  private apiUrl = 'http://localhost:3000/rooms';
 
   constructor(private http: HttpClient) {}
 
